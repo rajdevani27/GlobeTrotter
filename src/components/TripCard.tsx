@@ -1,5 +1,5 @@
 import { CalendarDays, MapPin, Wallet } from "lucide-react";
-import { toast } from "sonner";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { formatINR, type Trip } from "@/data/mock";
 import { cn } from "@/lib/utils";
@@ -47,12 +47,11 @@ export function TripCard({ trip }: { trip: Trip }) {
             {formatINR(trip.budget)}
           </span>
         </div>
-        <Button
+        <Button asChild
           variant="outline"
           className="mt-auto w-full rounded-full"
-          onClick={() => toast(`Opening ${trip.name} soon`)}
         >
-          View Trip
+          <Link to="/itinerary">View Trip</Link>
         </Button>
       </div>
     </article>

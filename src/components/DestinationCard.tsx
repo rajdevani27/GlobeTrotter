@@ -1,5 +1,5 @@
 import { Heart, MapPin, Star, Wallet } from "lucide-react";
-import { toast } from "sonner";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import type { Destination } from "@/data/mock";
 import { cn } from "@/lib/utils";
@@ -51,13 +51,12 @@ export function DestinationCard({ destination, saved, onToggleSave }: Props) {
             <Wallet className="size-3.5" />
             {destination.cost}
           </span>
-          <Button
+          <Button asChild
             size="sm"
             variant="hero"
             className="rounded-full"
-            onClick={() => toast(`${destination.city} details coming soon`)}
           >
-            View
+            <Link to="/explore">View</Link>
           </Button>
         </div>
       </div>

@@ -62,19 +62,18 @@ export function Navbar() {
             <span className="absolute right-2 top-2 size-2 rounded-full bg-brand" />
           </button>
 
-          <div className="hidden items-center gap-2 md:flex">
+          <Link to="/profile" aria-label="Open profile" className="hidden items-center gap-2 rounded-xl px-1 py-1 transition-colors hover:bg-muted md:flex">
             <span className="grid size-9 place-items-center rounded-full bg-secondary text-xs font-bold text-secondary-foreground">
               {currentUser.initials}
             </span>
             <span className="text-sm font-medium">{currentUser.name}</span>
-          </div>
+          </Link>
 
-          <Button
+          <Button asChild
             variant="hero"
             className="hidden rounded-full sm:inline-flex"
-            onClick={() => toast("Trip planner coming soon")}
           >
-            <Plus /> Plan New Trip
+            <Link to="/create"><Plus /> Plan New Trip</Link>
           </Button>
 
           <button
@@ -104,18 +103,17 @@ export function Navbar() {
               </Link>
             ))}
           </nav>
-          <div className="mt-3 flex items-center gap-2 border-t border-border pt-3">
+          <Link to="/profile" onClick={() => setOpen(false)} className="mt-3 flex items-center gap-2 border-t border-border pt-3">
             <span className="grid size-9 place-items-center rounded-full bg-secondary text-xs font-bold">
               {currentUser.initials}
             </span>
             <span className="text-sm font-medium">{currentUser.name}</span>
-          </div>
-          <Button
+          </Link>
+          <Button asChild
             variant="hero"
             className="mt-3 w-full rounded-full"
-            onClick={() => toast("Trip planner coming soon")}
           >
-            <Plus /> Plan New Trip
+            <Link to="/create" onClick={() => setOpen(false)}><Plus /> Plan New Trip</Link>
           </Button>
         </div>
       )}

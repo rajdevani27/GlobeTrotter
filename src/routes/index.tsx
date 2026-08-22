@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { CalendarDays, Compass, MapPin, Pencil, Plus, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -61,12 +61,12 @@ function Dashboard() {
                 Handpicked places based on your travel style.
               </p>
             </div>
-            <button
-              onClick={() => toast("Full destination list coming soon")}
+            <Link
+              to="/explore"
               className="shrink-0 cursor-pointer text-sm font-semibold text-primary hover:underline"
             >
               View all →
-            </button>
+            </Link>
           </div>
 
           <div className="no-scrollbar -mx-4 mt-6 flex gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
@@ -139,19 +139,17 @@ function Dashboard() {
                   </div>
 
                   <div className="flex flex-col gap-3 sm:flex-row">
-                    <Button
+                    <Button asChild
                       variant="hero"
                       className="w-full rounded-full sm:w-auto"
-                      onClick={() => toast("Trip details coming soon")}
                     >
-                      View Trip
+                      <Link to="/itinerary">View Trip</Link>
                     </Button>
-                    <Button
+                    <Button asChild
                       variant="outline"
                       className="w-full rounded-full sm:w-auto"
-                      onClick={() => toast("Trip editor coming soon")}
                     >
-                      <Pencil /> Edit
+                      <Link to="/create"><Pencil /> Edit</Link>
                     </Button>
                   </div>
                 </div>
@@ -180,19 +178,19 @@ function Dashboard() {
               icon={Plus}
               title="Plan a Trip"
               description="Create a new multi-city itinerary."
-              onClick={() => toast("Trip planner coming soon")}
+              to="/create"
             />
             <QuickActionCard
               icon={Compass}
               title="Explore"
               description="Discover destinations and activities."
-              onClick={() => toast("Explore page coming soon")}
+              to="/explore"
             />
             <QuickActionCard
               icon={CalendarDays}
               title="Calendar"
               description="View your upcoming travel plans."
-              onClick={() => toast("Calendar coming soon")}
+              to="/calendar"
             />
           </div>
         </section>
