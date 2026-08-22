@@ -1,11 +1,17 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Bell, Globe2, Menu, Plus, X } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@/data/mock";
 import { cn } from "@/lib/utils";
 
-const links = ["Dashboard", "My Trips", "Explore", "Calendar", "Community"];
+const links = [
+  { label: "Dashboard", to: "/" },
+  { label: "My Trips", to: "/trips" },
+  { label: "Explore", to: "/explore" },
+  { label: "Calendar", to: "/calendar" },
+];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -14,7 +20,6 @@ export function Navbar() {
   const select = (link: string) => {
     setActive(link);
     setOpen(false);
-    if (link !== "Dashboard") toast(`${link} is coming soon`);
   };
 
   return (
@@ -31,18 +36,19 @@ export function Navbar() {
 
         <nav className="hidden items-center justify-center gap-1 lg:flex">
           {links.map((link) => (
-            <button
-              key={link}
-              onClick={() => select(link)}
+            <Link
+              key={link.label}
+              to={link.to}
+              onClick={() => select(link.label)}
               className={cn(
                 "cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                active === link
+                active === link.label
                   ? "bg-accent text-accent-foreground"
                   : "text-muted-foreground hover:bg-muted hover:text-foreground",
               )}
             >
-              {link}
-            </button>
+              {link.label}
+            </Link>
           ))}
         </nav>
 
@@ -85,16 +91,17 @@ export function Navbar() {
         <div className="border-t border-border bg-background px-4 pb-4 pt-2 lg:hidden">
           <nav className="flex flex-col">
             {links.map((link) => (
-              <button
-                key={link}
-                onClick={() => select(link)}
+              <Link
+                key={link.label}
+                to={link.to}
+                onClick={() => select(link.label)}
                 className={cn(
                   "cursor-pointer rounded-xl px-3 py-3 text-left text-sm font-medium transition-colors",
-                  active === link ? "bg-accent text-accent-foreground" : "hover:bg-muted",
+                  active === link.label ? "bg-accent text-accent-foreground" : "hover:bg-muted",
                 )}
               >
-                {link}
-              </button>
+                {link.label}
+              </Link>
             ))}
           </nav>
           <div className="mt-3 flex items-center gap-2 border-t border-border pt-3">

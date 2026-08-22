@@ -1,6 +1,6 @@
 import { Compass, Plus } from "lucide-react";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 import { SearchBar } from "@/components/SearchBar";
 import heroImage from "@/assets/hero-travel.jpg";
 
@@ -34,21 +34,19 @@ export function HeroSection() {
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button
+            <Button asChild
               variant="brand"
               size="lg"
               className="w-full rounded-full sm:w-auto"
-              onClick={() => toast("Trip planner coming soon")}
             >
-              <Plus /> Plan New Trip
+              <Link to="/create"><Plus /> Plan New Trip</Link>
             </Button>
-            <Button
+            <Button asChild
               variant="heroGhost"
               size="lg"
               className="w-full rounded-full sm:w-auto"
-              onClick={() => toast("Explore page coming soon")}
             >
-              <Compass /> Explore Destinations
+              <Link to="/explore"><Compass /> Explore Destinations</Link>
             </Button>
           </div>
         </div>
