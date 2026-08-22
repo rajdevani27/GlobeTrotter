@@ -47,10 +47,7 @@ export function TripCard({ trip }: { trip: Trip }) {
             {formatINR(trip.budget)}
           </span>
         </div>
-        <Button asChild
-          variant="outline"
-          className="mt-auto w-full rounded-full"
-        >
+        <Button asChild variant="outline" className="mt-auto w-full rounded-full">
           <Link to="/itinerary">View Trip</Link>
         </Button>
       </div>

@@ -10,9 +10,14 @@ interface Props {
 }
 
 export function QuickActionCard({ icon: Icon, title, description, to }: Props) {
+  const linkProps =
+    to === "/explore"
+      ? { to: "/explore" as const }
+      : { to: "/$feature" as const, params: { feature: to.slice(1) } };
+
   return (
     <Link
-      to={to}
+      {...linkProps}
       className="group flex w-full cursor-pointer items-start gap-4 rounded-3xl border border-border bg-card p-5 text-left shadow-soft transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-lift"
     >
       <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-accent text-accent-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">

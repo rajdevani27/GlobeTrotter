@@ -34,19 +34,15 @@ export function HeroSection() {
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button asChild
-              variant="brand"
-              size="lg"
-              className="w-full rounded-full sm:w-auto"
-            >
-              <Link to="/create"><Plus /> Plan New Trip</Link>
+            <Button asChild variant="brand" size="lg" className="w-full rounded-full sm:w-auto">
+              <Link to="/$feature" params={{ feature: "create" }}>
+                <Plus /> Plan New Trip
+              </Link>
             </Button>
-            <Button asChild
-              variant="heroGhost"
-              size="lg"
-              className="w-full rounded-full sm:w-auto"
-            >
-              <Link to="/explore"><Compass /> Explore Destinations</Link>
+            <Button asChild variant="heroGhost" size="lg" className="w-full rounded-full sm:w-auto">
+              <Link to="/explore">
+                <Compass /> Explore Destinations
+              </Link>
             </Button>
           </div>
         </div>

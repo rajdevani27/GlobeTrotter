@@ -7,10 +7,10 @@ import { currentUser } from "@/data/mock";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { label: "Dashboard", to: "/" },
-  { label: "My Trips", to: "/trips" },
-  { label: "Explore", to: "/explore" },
-  { label: "Calendar", to: "/calendar" },
+  { label: "Dashboard", to: "/" as const, params: {} },
+  { label: "My Trips", to: "/$feature" as const, params: { feature: "trips" } },
+  { label: "Explore", to: "/explore" as const, params: {} },
+  { label: "Calendar", to: "/$feature" as const, params: { feature: "calendar" } },
 ];
 
 export function Navbar() {
@@ -39,6 +39,7 @@ export function Navbar() {
             <Link
               key={link.label}
               to={link.to}
+              params={link.params}
               onClick={() => select(link.label)}
               className={cn(
                 "cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-colors",
@@ -62,18 +63,22 @@ export function Navbar() {
             <span className="absolute right-2 top-2 size-2 rounded-full bg-brand" />
           </button>
 
-          <Link to="/profile" aria-label="Open profile" className="hidden items-center gap-2 rounded-xl px-1 py-1 transition-colors hover:bg-muted md:flex">
+          <Link
+            to="/$feature"
+            params={{ feature: "profile" }}
+            aria-label="Open profile"
+            className="hidden items-center gap-2 rounded-xl px-1 py-1 transition-colors hover:bg-muted md:flex"
+          >
             <span className="grid size-9 place-items-center rounded-full bg-secondary text-xs font-bold text-secondary-foreground">
               {currentUser.initials}
             </span>
             <span className="text-sm font-medium">{currentUser.name}</span>
           </Link>
 
-          <Button asChild
-            variant="hero"
-            className="hidden rounded-full sm:inline-flex"
-          >
-            <Link to="/create"><Plus /> Plan New Trip</Link>
+          <Button asChild variant="hero" className="hidden rounded-full sm:inline-flex">
+            <Link to="/$feature" params={{ feature: "create" }}>
+              <Plus /> Plan New Trip
+            </Link>
           </Button>
 
           <button
@@ -93,6 +98,7 @@ export function Navbar() {
               <Link
                 key={link.label}
                 to={link.to}
+                params={link.params}
                 onClick={() => select(link.label)}
                 className={cn(
                   "cursor-pointer rounded-xl px-3 py-3 text-left text-sm font-medium transition-colors",
@@ -103,17 +109,21 @@ export function Navbar() {
               </Link>
             ))}
           </nav>
-          <Link to="/profile" onClick={() => setOpen(false)} className="mt-3 flex items-center gap-2 border-t border-border pt-3">
+          <Link
+            to="/$feature"
+            params={{ feature: "profile" }}
+            onClick={() => setOpen(false)}
+            className="mt-3 flex items-center gap-2 border-t border-border pt-3"
+          >
             <span className="grid size-9 place-items-center rounded-full bg-secondary text-xs font-bold">
               {currentUser.initials}
             </span>
             <span className="text-sm font-medium">{currentUser.name}</span>
           </Link>
-          <Button asChild
-            variant="hero"
-            className="mt-3 w-full rounded-full"
-          >
-            <Link to="/create" onClick={() => setOpen(false)}><Plus /> Plan New Trip</Link>
+          <Button asChild variant="hero" className="mt-3 w-full rounded-full">
+            <Link to="/$feature" params={{ feature: "create" }} onClick={() => setOpen(false)}>
+              <Plus /> Plan New Trip
+            </Link>
           </Button>
         </div>
       )}

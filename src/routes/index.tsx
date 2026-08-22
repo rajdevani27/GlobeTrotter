@@ -139,17 +139,13 @@ function Dashboard() {
                   </div>
 
                   <div className="flex flex-col gap-3 sm:flex-row">
-                    <Button asChild
-                      variant="hero"
-                      className="w-full rounded-full sm:w-auto"
-                    >
+                    <Button asChild variant="hero" className="w-full rounded-full sm:w-auto">
                       <Link to="/itinerary">View Trip</Link>
                     </Button>
-                    <Button asChild
-                      variant="outline"
-                      className="w-full rounded-full sm:w-auto"
-                    >
-                      <Link to="/create"><Pencil /> Edit</Link>
+                    <Button asChild variant="outline" className="w-full rounded-full sm:w-auto">
+                      <Link to="/$feature" params={{ feature: "create" }}>
+                        <Pencil /> Edit
+                      </Link>
                     </Button>
                   </div>
                 </div>
