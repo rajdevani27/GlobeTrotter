@@ -48,7 +48,7 @@ function LoginPage() {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    if (!loading && session) void navigate({ to: "/dashboard", replace: true });
+    if (!loading && session) void navigate({ to: "/", replace: true });
   }, [loading, session, navigate]);
 
   const setField = (key: keyof typeof values) => (value: string) => {
@@ -85,7 +85,7 @@ function LoginPage() {
       return;
     }
 
-    void navigate({ to: "/dashboard", replace: true });
+    void navigate({ to: "/", replace: true });
   }
 
   return (

@@ -69,7 +69,7 @@ function SignupPage() {
   const [needsConfirmation, setNeedsConfirmation] = useState(false);
 
   useEffect(() => {
-    if (!loading && session) void navigate({ to: "/dashboard", replace: true });
+    if (!loading && session) void navigate({ to: "/", replace: true });
   }, [loading, session, navigate]);
 
   const setField = (key: keyof typeof values) => (value: string) => {
@@ -98,7 +98,7 @@ function SignupPage() {
       email: parsed.data.email,
       password: parsed.data.password,
       options: {
-        emailRedirectTo: `${window.location.origin}/dashboard`,
+        emailRedirectTo: window.location.origin,
         data: { full_name: parsed.data.fullName },
       },
     });
@@ -118,7 +118,7 @@ function SignupPage() {
       return;
     }
 
-    void navigate({ to: "/dashboard", replace: true });
+    void navigate({ to: "/", replace: true });
   }
 
   if (needsConfirmation) {

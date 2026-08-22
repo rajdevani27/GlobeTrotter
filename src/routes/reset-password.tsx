@@ -79,7 +79,7 @@ function ResetPasswordPage() {
       return;
     }
 
-    void navigate({ to: "/dashboard", replace: true });
+    void navigate({ to: "/", replace: true });
   }
 
   return (
