@@ -1,0 +1,215 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   GlobeTrotter Design System — token registry
+   Every colour, radius, shadow and font in the app resolves through here.
+   Retheming the product means editing this block only.
+   ========================================================================== */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Pale blue supporting surface — statistic cards, metadata, selected states */
+  --color-soft: var(--soft);
+  --color-soft-foreground: var(--soft-foreground);
+  --color-soft-border: var(--soft-border);
+
+  /* Orange highlight — budgets, warnings, planning badges. Used sparingly. */
+  --color-highlight: var(--highlight);
+  --color-highlight-soft: var(--highlight-soft);
+  --color-highlight-foreground: var(--highlight-foreground);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-success-foreground: var(--success-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --font-sans: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback';
+
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.35);
+  --radius-2xl: calc(var(--radius) * 1.75);
+  --radius-3xl: calc(var(--radius) * 2.25);
+  --radius-4xl: calc(var(--radius) * 3);
+
+  /* Soft elevation. Cards use `shadow-card`, hover lifts to `shadow-card-hover`. */
+  --shadow-card: 0 1px 2px oklch(0.26 0.06 258 / 0.04), 0 12px 28px -20px oklch(0.26 0.06 258 / 0.22);
+  --shadow-card-hover: 0 1px 2px oklch(0.26 0.06 258 / 0.05), 0 18px 40px -22px oklch(0.26 0.06 258 / 0.3);
+  --shadow-popover: 0 8px 40px -12px oklch(0.26 0.06 258 / 0.28);
+}
+
+:root {
+  color-scheme: light;
+
+  /* Warm off-white page, pure white cards */
+  --background: oklch(0.983 0.004 85);
+  --foreground: oklch(0.26 0.058 262);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.26 0.058 262);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.26 0.058 262);
+
+  /* Bright GlobeTrotter blue */
+  --primary: oklch(0.575 0.203 259);
+  --primary-hover: oklch(0.52 0.2 259);
+  --primary-foreground: oklch(0.995 0 0);
+
+  --secondary: oklch(0.968 0.008 250);
+  --secondary-foreground: oklch(0.26 0.058 262);
+  --muted: oklch(0.968 0.008 250);
+  --muted-foreground: oklch(0.556 0.036 257);
+  --accent: oklch(0.955 0.019 250);
+  --accent-foreground: oklch(0.26 0.058 262);
+
+  --soft: oklch(0.968 0.019 250);
+  --soft-foreground: oklch(0.26 0.058 262);
+  --soft-border: oklch(0.92 0.026 250);
+
+  --highlight: oklch(0.685 0.176 47);
+  --highlight-soft: oklch(0.958 0.038 70);
+  --highlight-foreground: oklch(0.47 0.13 47);
+
+  --success: oklch(0.62 0.14 158);
+  --success-soft: oklch(0.955 0.035 158);
+  --success-foreground: oklch(0.42 0.11 158);
+
+  --destructive: oklch(0.585 0.208 25);
+  --destructive-soft: oklch(0.958 0.03 25);
+  --destructive-foreground: oklch(0.995 0 0);
+
+  --border: oklch(0.915 0.012 250);
+  --input: oklch(0.895 0.016 250);
+  --ring: oklch(0.575 0.203 259);
+
+  --chart-1: oklch(0.575 0.203 259);
+  --chart-2: oklch(0.7 0.14 240);
+  --chart-3: oklch(0.685 0.176 47);
+  --chart-4: oklch(0.62 0.14 158);
+  --chart-5: oklch(0.556 0.036 257);
+
+  --radius: 0.75rem;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: oklch(0.19 0.032 262);
+  --foreground: oklch(0.97 0.008 250);
+  --card: oklch(0.235 0.035 262);
+  --card-foreground: oklch(0.97 0.008 250);
+  --popover: oklch(0.235 0.035 262);
+  --popover-foreground: oklch(0.97 0.008 250);
+
+  --primary: oklch(0.645 0.185 259);
+  --primary-hover: oklch(0.7 0.17 259);
+  --primary-foreground: oklch(0.16 0.03 262);
+
+  --secondary: oklch(0.29 0.038 262);
+  --secondary-foreground: oklch(0.97 0.008 250);
+  --muted: oklch(0.29 0.038 262);
+  --muted-foreground: oklch(0.72 0.028 253);
+  --accent: oklch(0.31 0.042 262);
+  --accent-foreground: oklch(0.97 0.008 250);
+
+  --soft: oklch(0.29 0.048 258);
+  --soft-foreground: oklch(0.97 0.008 250);
+  --soft-border: oklch(0.36 0.05 258);
+
+  --highlight: oklch(0.75 0.16 55);
+  --highlight-soft: oklch(0.32 0.062 55);
+  --highlight-foreground: oklch(0.86 0.11 65);
+
+  --success: oklch(0.7 0.13 158);
+  --success-soft: oklch(0.3 0.055 158);
+  --success-foreground: oklch(0.85 0.1 158);
+
+  --destructive: oklch(0.65 0.19 25);
+  --destructive-soft: oklch(0.32 0.07 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: oklch(0.645 0.185 259);
+
+  --chart-1: oklch(0.645 0.185 259);
+  --chart-2: oklch(0.72 0.13 240);
+  --chart-3: oklch(0.75 0.16 55);
+  --chart-4: oklch(0.7 0.13 158);
+  --chart-5: oklch(0.72 0.028 253);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Deep navy headings by default — hierarchy rule of the design system */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-foreground;
+    letter-spacing: -0.015em;
+  }
+
+  /* Consistent, visible focus ring on every interactive element */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring/45 ring-offset-2 ring-offset-background;
+  }
+
+  /* Date/select controls inherit the system look rather than the browser's */
+  input[type='date']::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 150ms ease;
+  }
+
+  input[type='date']::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
